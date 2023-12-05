@@ -1,46 +1,59 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Simfoni e-commerce project
+Simfoni is an e-commerce store which has products of different categories listed so that user can choose and view its details for shopping.
 
-## Available Scripts
+Being a fully responsive app, it works best for both mobile and pc screens.
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Screenshots
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Home Page
 
-### `npm test`
+![App Screenshot](https://i.ibb.co/jrd0r8r/Screenshot-378.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Products and its details
+- Product description page
+- Search functionality to find Products
+- Filter & Sort items
+- Skeleton loader
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## App-Flow:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- The Home page contains list of categories and product items.
+- The carousel consists of new deals and offers
+- click the product item, it redirects to product description page.
+- The Navbar consists of search, Filter and sort functionality.
+- Other few static components - Search tags, categories.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Tech Stack
 
-## Learn More
+**Client:** React, Redux, TailwindCSS, Redux-Persist
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**API:** The app uses backend private API from https://rapidapi.com/apidojo/api/wayfair
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+## Documentation
+
+- Clone the repo
+- npm i (install required node_modules)
+- npm start 
+
+This will start the server on - http://localhost:3000/
+
+The redux-persist will store the data in localStorage.
+
+
+
+## Author
+
+- [@HemanthKumar-CN](https://github.com/HemanthKumar-CN)
+
