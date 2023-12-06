@@ -40,6 +40,10 @@ Being a fully responsive app, it works best for both mobile and pc screens.
 **API:** The app uses backend private API from https://rapidapi.com/apidojo/api/wayfair
 
 
+## Demo
+
+https://drive.google.com/file/d/1o6oqmxNBm-t2Qx-XwDETgeBmxXz-IaDg/view?usp=sharing
+
 
 ## Documentation
 
