@@ -28,7 +28,7 @@ export const Carousel = () => {
   }, [currentSlide]);
 
   return (
-    <div className="relative overflow-hidden p-4 md:p-0">
+    <div className="relative overflow-hidden p-4 md:p-12">
       <div className="flex">
         {images.map((image, index) => (
           <div

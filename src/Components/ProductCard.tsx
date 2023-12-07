@@ -8,6 +8,8 @@ import {
   useNavigate,
   useNavigation,
 } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setSingleProduct } from "../Redux/action";
 
 interface ProductProps {
   product: {
@@ -64,6 +66,7 @@ interface ProductProps {
 
 const ProductCard = ({ product }: ProductProps) => {
   const isLoading = useSelector((state: any) => state.app.isLoading);
+  const dispatch = useDispatch();
 
   // console.log(isLoading, "@Productcard outside");
 
@@ -87,6 +90,7 @@ const ProductCard = ({ product }: ProductProps) => {
   };
 
   const handleProudctPage = () => {
+    dispatch(setSingleProduct(product));
     navigate(`/product/${encodeURIComponent(product.sku)}`);
   };
 
@@ -105,7 +109,9 @@ const ProductCard = ({ product }: ProductProps) => {
         />
       </div>
       <div onClick={handleProudctPage} className="px-4 py-4">
-        <div className="font-bold text-sm  md:text-base  ">{product.title}</div>
+        <div className="font-bold text-sm  md:text-base overflow-hidden  ">
+          {product.title.slice(0, 40)}...
+        </div>
 
         <p className="text-gray-400 mb-2 text-xs font-semibold">
           {product.sku}

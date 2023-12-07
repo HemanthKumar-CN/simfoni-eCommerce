@@ -6,11 +6,13 @@ import Furniture from "../assets/officeFurniture.png";
 import { useParams } from "react-router-dom";
 
 const ProductDescriptionMobileView = ({ product }: any) => {
+  const params = useParams();
+
   return (
     <div className="flex flex-col bg-white  md:hidden p-4">
       {/* Main Image */}
       <img
-        src={Furniture}
+        src={product.image}
         alt={product.title}
         className="w-full h-auto cursor-zoom-in transition-transform duration-300 transform hover:scale-125 md:w-1/2 md:mr-4"
       />
@@ -19,7 +21,7 @@ const ProductDescriptionMobileView = ({ product }: any) => {
         {/* Additional Images */}
         <div className="flex justify-center md:justify-start space-x-2 mb-4">
           {Array(3)
-            .fill(Furniture)
+            .fill(product.image)
             .map((image, index) => (
               <img
                 key={index}
@@ -32,10 +34,16 @@ const ProductDescriptionMobileView = ({ product }: any) => {
 
         {/* Product Info */}
         <div>
-          <h2 className="text-2xl font-bold mb-2">mobile{product.title}</h2>
-          <p className="text-gray-600 mb-2">ID: {product.id}</p>
-          <p className="text-lg font-semibold mb-2">${product.price}</p>
-          <p className="text-gray-600 mb-2">Quantity: {product.quantity}</p>
+          <h2 className="text-2xl font-bold mb-2">{product.title}</h2>
+          <p className="text-gray-600 mb-2 text-sm font-semibold">
+            SKU Number {params.productId}
+          </p>
+          <p className="text-lg font-semibold mb-2">
+            Price: ${product.price}/each
+          </p>
+          <p className="text-gray-600 mb-2 font-semibold">
+            Manufacture Name: {product.manufactureName}
+          </p>
 
           {/* Add to Cart Button */}
           <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 mb-4">
@@ -62,12 +70,13 @@ const ProductDescriptionMobileView = ({ product }: any) => {
 
 export const ProductDescription = () => {
   const product = useSelector((state: any) => state.app.products);
+  const singleProduct = useSelector((state: any) => state.app.singleProduct);
   const [productImage, setProductImage] = useState(
     "https://m.media-amazon.com/images/I/71NANIn2jhL._SX679_.jpg",
   );
   const params = useParams();
 
-  console.log(params);
+  console.log(params, singleProduct, "!!!!!!!!!!!!!!!!!!!");
 
   return (
     <div>
@@ -75,7 +84,7 @@ export const ProductDescription = () => {
         <div className="w-1/2">
           {/* Main Image */}
           <img
-            src={productImage}
+            src={singleProduct.image}
             //   src={product.mainImage}
             alt={product.title}
             className="w-96 ml-4 h-auto cursor-zoom-in transition-transform duration-300 transform hover:scale-125"
@@ -84,9 +93,9 @@ export const ProductDescription = () => {
           {/* Additional Images */}
           <div className="flex mt-4">
             {[
-              "https://m.media-amazon.com/images/I/61FyHHb-izL._SX679_.jpg",
-              "https://m.media-amazon.com/images/I/81RJ69XCwdL._SX679_.jpg",
-              "https://m.media-amazon.com/images/I/71NANIn2jhL._SX679_.jpg",
+              singleProduct.image,
+              singleProduct.image,
+              singleProduct.image,
             ].map((image: any, index: number) => (
               <img
                 key={index}
@@ -101,20 +110,15 @@ export const ProductDescription = () => {
 
         {/* Product Info */}
         <div className="w-1/2 ml-4">
-          <h2 className="text-2xl font-bold mb-2">
-            Pintola All Natural Peanut Butter Crunchy 1kg | Unsweetened | 30g
-            Protein | Vegan Peanut Butter, 100% Pure Roasted Peanuts | Non Gmo |
-            High in Protein Spread, Gluten & Cholesterol Free, Nut Butter
-            {product.title}
-          </h2>
+          <h2 className="text-2xl font-bold mb-2">{singleProduct.title}</h2>
           <p className="text-gray-500 mb-2 text-sm font-semibold">
-            SKU Number {params.productId} {product.id}
+            SKU Number {params.productId}
           </p>
           <p className="text-xl font-bold mb-2">
-            Price: $6.70/each{product.price}
+            Price: ${singleProduct.price}/each
           </p>
           <p className="text-gray-600 mb-2 font-semibold">
-            Quantity: 1kg {product.quantity}
+            Manufacture Name: {singleProduct.manufactureName}
           </p>
 
           {/* Add to Cart Button */}
@@ -126,15 +130,18 @@ export const ProductDescription = () => {
           <div className="mt-4 text-sm text-gray-500 text-justify">
             {/* Add more product information as needed */}
             <h2 className="font-bold text-gray-500">Additional Information</h2>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
-            dolorum vel odit temporibus officia iusto autem quibusdam
-            consequuntur expedita, assumenda saepe quis quas minima modi.
-            Dolorum reiciendis vero repellendus numquam? Quis beatae quidem
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem
+            nihil esse ad vitae earum accusantium asperiores repudiandae tempora
+            impedit mollitia? Beatae voluptatum et inventore natus rerum
+            laudantium cumque nobis laborum! Nostrum libero consectetur, quasi
+            dignissimos, distinctio unde possimus voluptas sapiente deserunt
+            facere ab aliquam? Omnis itaque nobis, distinctio ea sapiente quo
+            optio quis, corporis repellat at blanditiis placeat deleniti eaque.
           </div>
         </div>
       </div>
 
-      <ProductDescriptionMobileView product={product} />
+      <ProductDescriptionMobileView product={singleProduct} />
 
       <BestSellingItemsSlider
         bestSellingProducts={product}

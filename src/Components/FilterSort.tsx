@@ -18,9 +18,6 @@ export const FilterSort = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const trendingSearches =
-    JSON.parse(localStorage.getItem("trending") || "") || [];
-
   const handleClickOutside = (event: MouseEvent) => {
     if (inputRef.current && !inputRef.current.contains(event.target as Node)) {
       setDropdownVisible(false);
@@ -55,11 +52,21 @@ export const FilterSort = () => {
     set_maxValue(e.maxValue);
   };
 
-  useEffect(() => {
-    // localStorage.setItem("sortBy", sortBy)
-    // localStorage.setItem("maxVal", maxValue.toString())
-    // localStorage.setItem("minVal", minValue.toString())
-  }, [sortBy, maxValue, minValue]);
+  const handleFilter = () => {
+    const currentURL = new URL(window.location.href);
+    const params = new URLSearchParams(currentURL.search);
+
+    // console.log(params);
+
+    params.set("minVal", minValue.toString());
+    params.set("maxVal", maxValue.toString());
+    // params.set('filter', `${minValue}to${maxValue}`);
+
+    currentURL.search = params.toString();
+
+    navigate(`${currentURL.pathname}${currentURL.search}`);
+    setDropdownFilter(false);
+  };
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
@@ -157,7 +164,7 @@ export const FilterSort = () => {
             {/* Dropdown */}
             {dropdownVisible && (
               <div className="absolute top-full z-50 left-0 w-48 md:w-96 max-h-48 overflow-y-auto border border-t-0 rounded-b-md bg-white">
-                {trendingSearches.map((e: string) => (
+                {["all", "light camera"].map((e: string) => (
                   <Link to={`/search?query=${encodeURIComponent(e)}`}>
                     <div
                       className="p-2 cursor-pointer hover:bg-gray-100"
@@ -231,7 +238,7 @@ export const FilterSort = () => {
                 />
 
                 <button
-                  onClick={() => setDropdownFilter(false)}
+                  onClick={handleFilter}
                   className="border rounded-md px-2 py-1 text-white bg-cyan-600 focus:outline-none focus:ring focus:border-blue-300 transition duration-300"
                 >
                   Submit

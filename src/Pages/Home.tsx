@@ -22,7 +22,9 @@ export const Home = () => {
   const product = useSelector((state: any) => state.app.products);
 
   useEffect(() => {
-    dispatch(getProducts("all"));
+    if (product.length == 0) {
+      dispatch(getProducts("all"));
+    }
   }, []);
 
   const products = [
@@ -121,8 +123,6 @@ export const Home = () => {
       quantity: 0,
     },
   ];
-
-  console.log(product, "!!!!!!!!!!!!!!!!!!!!!!!!!");
 
   return (
     <div>
