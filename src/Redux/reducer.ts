@@ -13,6 +13,7 @@ import {
 const initState = {
   products: [],
   filterData: [],
+  sortData: [],
   search: {
     searchProducts: [],
     isLoading: false,
