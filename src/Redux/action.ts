@@ -23,8 +23,8 @@ const options: any = {
     itemsperpage: "5",
   },
   headers: {
-    "X-RapidAPI-Key": "9d4904cfe8mshf94a2ca52460c5cp1951e6jsn73f864063479",
-    "X-RapidAPI-Host": "wayfair.p.rapidapi.com",
+    "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
+    "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
   },
 };
 
